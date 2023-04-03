@@ -75,3 +75,5 @@ function Navbar({ user, setUser }) {
 }
 
 export default Navbar;
+
+// somthing random
