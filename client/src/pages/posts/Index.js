@@ -16,24 +16,30 @@ function Index({ user }) {
     console.log(posts)
     return (
             <div>
-                <h1>Index View</h1>
-                <div id="posts">
+                {user ? (
+                    <>
+                        <h1>{user}s Diary</h1>
+                        <div id="posts">
 
-                        {posts?.map((post, index) => 
-                            <Link to={`/posts/${post._id}`} key={index}>
-                                <div className="a-post">
-                                    {post.subject}
-                                </div>
-                            </Link>
-                        )}
+                                {posts?.map((post, index) => 
+                                    <Link to={`/posts/${post._id}`} key={index}>
+                                        <div className="a-post">
+                                            {post.subject}
+                                        </div>
+                                    </Link>
+                                )}
+                    
+                            {user && 
+                                <Link to="/posts/new">
+                                    <button>NEW POST</button>
+                                </Link>
+                            }
             
-                    {user && 
-                        <Link to="/posts/new">
-                            <button>NEW POST</button>
-                        </Link>
-                    }
-    
-                </div>
+                        </div>
+                    </>
+                ) : (
+                    <h1>Log in to Access Diary</h1>
+                )}
             </div>
     )
 }
