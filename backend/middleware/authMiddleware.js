@@ -8,7 +8,7 @@ async function authorize(req, res, next) {
     try {
         // 1. Check if the request has a token
         let token = req.header("Authorization") // ->  "Bearer adshjh0249384la;sf"
-
+        console.log(token)
         if (!token) { 
             throw new Error('No token provided')
         }
@@ -39,18 +39,22 @@ async function authorize(req, res, next) {
 }
 
 async function confirmUserAccess(req, res, next) {
+    console.log('use access')
     try {
+        console.log(req.user, req.params.id)
         let document;
-        if (req.baseUrl.includes('post')) { 
+        if (req.baseUrl.includes('diary')) { 
             document = await Post.findOne({ _id: req.params.id, user: req.user })
         } else {
             document = await Comment.findOne({ _id: req.params.id, user: req.user })
         }
+        console.log(document)
         if (!document) {
             throw new Error('User did not create this document')
         }
         next()
     } catch(err) {
+        console.log(err.message)
         res.status(403).json({ error: err.message })
     }
 }

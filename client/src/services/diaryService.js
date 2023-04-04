@@ -22,11 +22,17 @@ export async function getEntry(id) {
 }
 
 export async function deleteEntry(id) {
+    let token = localStorage.getItem("token")
     // const axios = customAxiosWithAuth()
     const axios = customAxios()
     console.log('diaryservice')
     try {
-        await axios.delete(`/diary/${id}`)
+        await axios.delete(`/diary/${id}`, 
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
     } catch(err) {
         console.log(err.message)
     }

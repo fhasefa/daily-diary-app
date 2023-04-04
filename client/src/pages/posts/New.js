@@ -22,6 +22,7 @@ function New({ user }) {
     return ( 
         <div>
             <h1>New Entry</h1>
+            <h3>Entry Date:{Date.toLocaleTimeString()}</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nme">Title:</label><br />
                 <input type="text" id="nme" ref={titleRef} /><br /><br />
