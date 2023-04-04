@@ -22,7 +22,9 @@ export async function getEntry(id) {
 }
 
 export async function deleteEntry(id) {
-    const axios = customAxiosWithAuth()
+    // const axios = customAxiosWithAuth()
+    const axios = customAxios()
+    console.log('diaryservice')
     try {
         await axios.delete(`/diary/${id}`)
     } catch(err) {

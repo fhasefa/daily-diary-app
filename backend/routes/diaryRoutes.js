@@ -13,10 +13,12 @@ router.get('/seed', diaryControl.seed)
 router.get('/', diaryControl.index)
 
 // delete
-router.delete('/:id', authorize, confirmUserAccess, diaryControl.delete)
+// router.delete('/:id', authorize, confirmUserAccess, diaryControl.delete)
+router.delete('/:id', diaryControl.delete)
 
 // update
-router.put('/:id', authorize, confirmUserAccess, diaryControl.update)
+// router.put('/:id', authorize, confirmUserAccess, diaryControl.update)
+router.put('/:id', diaryControl.update)
 
 // create
 router.post('/', authorize, diaryControl.create)

@@ -29,6 +29,7 @@ function Show({ user }) {
     }
 
     async function handleDeleteEntry() {
+        console.log('handleDeleteEntry')
         await deleteEntry(entry._id)
         navigate('/diary')
     }
