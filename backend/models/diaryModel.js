@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const postSchema = new Schema({
-   subject: { type: String },
+   title: { type: String },
    body: { type: String },
    user: { type: String, required: true },
    comments: [{
@@ -15,6 +15,6 @@ const postSchema = new Schema({
    }]
 }, { timestamps: true })
 
-const Post = mongoose.model('Post', postSchema)
+const Entry = mongoose.model('Entries', postSchema)
 
-module.exports = Post
+module.exports = Entry

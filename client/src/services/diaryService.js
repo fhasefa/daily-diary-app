@@ -1,9 +1,9 @@
 import { customAxios, customAxiosWithAuth } from './api'
 
-export async function getAllPosts() {
+export async function getAllEntries() {
     const axios = customAxios()
     try {
-        const response = await axios.get('/posts')
+        const response = await axios.get('/diary')
         return response.data
     } catch(err) {
         console.log(err.message)
@@ -11,39 +11,39 @@ export async function getAllPosts() {
     }
 }
 
-export async function getPost(id) {
+export async function getEntry(id) {
     const axios = customAxios()
     try {
-        const response = await axios.get(`/posts/${id}`)
+        const response = await axios.get(`/diary/${id}`)
         return response.data
     } catch(err) {
         console.log(err.message)
     }
 }
 
-export async function deletePost(id) {
+export async function deleteEntry(id) {
     const axios = customAxiosWithAuth()
     try {
-        await axios.delete(`/posts/${id}`)
+        await axios.delete(`/diary/${id}`)
     } catch(err) {
         console.log(err.message)
     }
 }
 
-export async function createPost(post) {
+export async function createEntry(entry) {
     const axios = customAxiosWithAuth()
     try {
-        const response = await axios.post('/posts', post)
+        const response = await axios.post('/diary', entry)
         return response.data
     } catch(err) {
         console.log(err.message)
     }
 }
 
-export async function updatePost(id, post) {
+export async function updateEntry(id, entry) {
     const axios = customAxiosWithAuth()
     try {
-        await axios.put(`/posts/${id}`, post)
+        await axios.put(`/diary/${id}`, entry)
     } catch(err) {
         console.log(err.message)
     }

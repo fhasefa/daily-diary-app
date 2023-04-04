@@ -45,14 +45,14 @@ function App() {
     <div className="App">
       <Navbar user={loggedIn} setUser={setUser} />
       <Routes>
-          <Route path='/posts' element={<IndexPost user={loggedIn} />} />
-          <Route path='/posts/:id' element={<ShowPost user={loggedIn} />} />
+          <Route path='/diary' element={<IndexPost user={loggedIn} />} />
+          <Route path='/diary/:id' element={<ShowPost user={loggedIn} />} />
           {loggedIn ?
             <>
-              <Route path='/posts/new' element={<NewPost user={loggedIn} />} />
-              <Route path='/posts/:id/edit' element={<EditPost />} />
-              <Route path='/posts/:id/comments/:cid' element={<EditComment />} />
-              {!isLoading && <Route path='*' element={<Navigate to='/posts' />} />}
+              <Route path='/diary/new' element={<NewPost user={loggedIn} />} />
+              <Route path='/diary/:id/edit' element={<EditPost />} />
+              <Route path='/diary/:id/comments/:cid' element={<EditComment />} />
+              {!isLoading && <Route path='*' element={<Navigate to='/diary' />} />}
             </>
             :
             <>

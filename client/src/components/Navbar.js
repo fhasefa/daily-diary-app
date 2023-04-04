@@ -38,15 +38,12 @@ function Navbar({ user, setUser }) {
                     Posts
                   </Link>
                 </li>
-                <b>
-                  <li style={{ color: 'Red' }}>Welcome {user}!</li>
-                </b>
-
                 <li onClick={logout}>
                   <Link className="nav-link" to="/login">
                     Logout
                   </Link>
                 </li>
+                <li className="nav-link" style={{ color: 'yellow' }}>Welcome {user}!</li>
               </>
             ) : (
               <>

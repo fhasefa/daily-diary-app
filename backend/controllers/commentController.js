@@ -1,4 +1,4 @@
-const Posts = require('../models/postModel')
+const Posts = require('../models/diaryModel')
 const Comments = require('../models/commentModel')
 
 module.exports.createComment = async (req, res) => {

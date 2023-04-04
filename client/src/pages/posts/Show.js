@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { createCommentForPost, deleteCommentFromPost } from "../../services/commentService"
-import { deletePost, getPost } from "../../services/postService"
+import { deleteEntry, getEntry } from "../../services/diaryService"
 
 function Show({ user }) {
 
-    const [post, setPost] = useState({})
+    const [entry, setEntry] = useState({})
 
     const navigate = useNavigate()
     const params = useParams()
@@ -14,23 +14,23 @@ function Show({ user }) {
 
     useEffect(() => {
         async function loadData() {
-            const data = await getPost(params.id)
-            if (!data) navigate('/posts')
-            setPost(data)
+            const data = await getEntry(params.id)
+            if (!data) navigate('/diary')
+            setEntry(data)
         }
         loadData()
     }, [params.id])
 
     async function handleDeleteComment(comment) {
-        await deleteCommentFromPost(comment._id, post._id)
-        let updatedPost = { ...post }
-        updatedPost.comments = updatedPost.comments.filter(c => c._id !== comment._id)
-        setPost(updatedPost)
+        await deleteCommentFromPost(comment._id, entry._id)
+        let updatedEntry = { ...entry }
+        updatedEntry.comments = updatedEntry.comments.filter(c => c._id !== comment._id)
+        setEntry(updatedEntry)
     }
 
-    async function handleDeletePost() {
-        await deletePost(post._id)
-        navigate('/posts')
+    async function handleDeleteEntry() {
+        await deleteEntry(entry._id)
+        navigate('/diary')
     }
 
     async function handleSubmit(e) {
@@ -41,10 +41,10 @@ function Show({ user }) {
             user
         }
 
-        const newComment = await createCommentForPost(comment, post._id)
-        let updatedPost = { ...post }
-        updatedPost.comments.push(newComment)
-        setPost(updatedPost)
+        const newComment = await createCommentForPost(comment, entry._id)
+        let updatedEntry = { ...entry }
+        updatedEntry.comments.push(newComment)
+        setEntry(updatedEntry)
         bodyRef.current.value = ''
         detailsRef.current.open = false
     }
@@ -52,22 +52,22 @@ function Show({ user }) {
     return (
             <div>
                 <div className="a-post">
-                    <h2>{post.subject}</h2>
-                    <h5 style={{ opacity: '.3'}}>Posted by {post.user} on {new Date(post.createdAt).toLocaleDateString()} at {new Date(post.createdAt).toLocaleTimeString()}</h5>
-                    <div className='p-body'>{post.body}</div><br /><br />
+                    <h2>{entry.title}</h2>
+                    <h5 style={{ opacity: '.3'}}>Posted by {entry.user} on {new Date(entry.createdAt).toLocaleDateString()} at {new Date(entry.createdAt).toLocaleTimeString()}</h5>
+                    <div className='p-body'>{entry.body}</div><br /><br />
 
                     {
-                        post.comments?.length ?
+                        entry.comments?.length ?
                         <>
                             <div>Comments:</div>
-                            <div>{post.comments.map((comment, i) => 
+                            <div>{entry.comments.map((comment, i) => 
                                 <div key={i} className="comm">
                                     <div>{comment.user}</div>
                                     <div>{comment.body}</div>
                                     {comment.user === user &&
                                         <>
                                             <button onClick={() => handleDeleteComment(comment)}>X</button>
-                                            <Link to={`/posts/${post._id}/comments/${comment._id}`}><span>+</span></Link>
+                                            <Link to={`/posts/${entry._id}/comments/${comment._id}`}><span>+</span></Link>
                                         </>
                                     }
                                 </div>
@@ -87,15 +87,15 @@ function Show({ user }) {
                     }
                     
                     <div className="buttons">
-                        {post.user === user &&
+                        {entry.user === user &&
                             <>
-                                <button onClick={handleDeletePost}>Delete</button>
-                                <Link to={`/posts/${post._id}/edit`}>
+                                <button onClick={handleDeleteEntry}>Delete</button>
+                                <Link to={`/diary/${entry._id}/edit`}>
                                     <button>Edit</button>
                                 </Link>
                             </>
                         }
-                        <Link to='/posts'>
+                        <Link to='/diary'>
                             <button>Back</button>
                         </Link>
                     </div>

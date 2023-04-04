@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getAllPosts } from "../../services/postService"
+import { getAllEntries } from "../../services/diaryService"
 
 function Index({ user }) {
 
-    const [posts, setPosts] = useState([])
+    const [entries, setEntries] = useState([])
 
     useEffect(() => {
         async function loadData() {
-            const data = await getAllPosts()
-            setPosts(data)
+            const data = await getAllEntries()
+            setEntries(data)
         }
         loadData()
     }, [])
-    console.log(posts)
+    console.log(entries)
+
     return (
             <div>
                 {user ? (
                     <>
-                        <h1>{user}s Diary</h1>
+                        <h1><span style={{textTransform: 'capitalize'}}>{user}'s</span> Diary</h1>
                         <div id="posts">
 
-                                {posts?.map((post, index) => 
-                                    <Link to={`/posts/${post._id}`} key={index}>
+                                {entries?.map((entry, index) => 
+                                    <Link to={`/diary/${entry._id}`} key={index}>
                                         <div className="a-post">
-                                            {post.subject}
+                                            {entry.title}
                                         </div>
                                     </Link>
                                 )}
                     
                             {user && 
-                                <Link to="/posts/new">
-                                    <button>NEW POST</button>
+                                <Link to="/diary/new">
+                                    <button>NEW ENTRY</button>
                                 </Link>
                             }
             
