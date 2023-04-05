@@ -23,13 +23,16 @@ function Index({ user }) {
                         <div id="posts">
 
                                 {entries?.map((entry, index) => 
-                                    <Link to={`/diary/${entry._id}`} key={index}>
-                                        <div className="a-post">
-                                            <h4>{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4> <br />
-                                            {/* {entry.title} */}
-                                        </div>
-                                    </Link>
-                                )}
+                                    <div class="accordion" id="accordionExample">
+                                        <h4 class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4>
+                                        <Link to={`/diary/${entry._id}`} key={index}>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample" className="a-post">
+                                                {/* <h4 class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4> <br /> */}
+                                                {entry.title}
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    )}
                     
                             {user && 
                                 <Link to="/diary/new">
