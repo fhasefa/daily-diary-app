@@ -95,7 +95,7 @@ function Show({ user }) {
                             <summary>Reflection</summary>
                             <form onSubmit={handleSubmit}>
                                 <textarea ref={bodyRef} id="lc" cols="1" rows="1" />
-                                <button>Add</button>
+                                <button type="button" class="btn btn-primary">Add</button>
                             </form>
                         </>
                         // <details ref={detailsRef}>
@@ -105,14 +105,14 @@ function Show({ user }) {
                     <div className="buttons">
                         {entry.user === user &&
                             <>
-                                <button onClick={handleDeleteEntry}>Delete</button>
+                                <button type="button" class="btn btn-primary" onClick={handleDeleteEntry}>Delete</button>
                                 <Link to={`/diary/${entry._id}/edit`}>
-                                    <button>Edit</button>
+                                    <button type="button" class="btn btn-primary">Edit</button>
                                 </Link>
                             </>
                         }
                         <Link to='/diary'>
-                            <button>Back</button>
+                            <button type="button" class="btn btn-primary">Back</button>
                         </Link>
                     </div>
                 </div>

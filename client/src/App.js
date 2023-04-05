@@ -61,7 +61,7 @@ function App() {
             <>
               <Route path='/register' element={<Register setUser={setUser} />} />
               <Route path='/login' element={<Login setUser={setUser} />} />
-              {!isLoading && <Route path='*' element={<Navigate to='/login' />} />}
+              {!isLoading && <Route path='*' element={<Navigate to='/diary' />} />}
             </>
           }
       </Routes>

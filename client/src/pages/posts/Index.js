@@ -33,7 +33,8 @@ function Index({ user }) {
                     
                             {user && 
                                 <Link to="/diary/new">
-                                    <button>NEW ENTRY</button>
+                                    <button type="button" class="btn btn-primary">NEW ENTRY</button>
+                                    {/* <button>NEW ENTRY</button> */}
                                 </Link>
                             }
             
