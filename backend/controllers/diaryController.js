@@ -1,7 +1,7 @@
 const Posts = require('../models/diaryModel')
 const Comments = require('../models/commentModel')
 
-const posts = require('../models/posts')
+// const posts = require('../models/posts')
 
 module.exports.seed = async (req, res) => {
     // await Posts.deleteMany({})

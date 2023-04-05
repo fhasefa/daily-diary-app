@@ -54,22 +54,35 @@ function Show({ user }) {
             <div>
                 <div className="a-post">
                     <h2>{entry.title}</h2>
-                    <h5 style={{ opacity: '.3'}}>Posted by {entry.user} on {new Date(entry.createdAt).toLocaleDateString()} at {new Date(entry.createdAt).toLocaleTimeString()}</h5>
+                    <h5>Posted by <span style={{textTransform: 'capitalize'}}>{entry.user}</span> on {new Date(entry.createdAt).toLocaleDateString()}</h5>
                     <div className='p-body'>{entry.body}</div><br /><br />
 
                     {
-                        entry.comments?.length ?
+                        entry.comments?.length?
                         <>
-                            <div>Comments:</div>
+                            <div>Reflection from {new Date(entry.createdAt).toLocaleDateString()}:</div> <br />
                             <div>{entry.comments.map((comment, i) => 
-                                <div key={i} className="comm">
-                                    <div>{comment.user}</div>
+                                <div key={i} className="">
+                                    {/* <div>{comment.user}</div> */}
                                     <div>{comment.body}</div>
                                     {comment.user === user &&
-                                        <>
-                                            <button onClick={() => handleDeleteComment(comment)}>X</button>
-                                            <Link to={`/posts/${entry._id}/comments/${comment._id}`}><span>+</span></Link>
-                                        </>
+                                        <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">Action</button>
+                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><button class="dropdown-item" onClick={() => handleDeleteComment(comment)}>Delete</button></li>
+                                            {/* <li><a class="dropdown-item" href="#" onClick={handleDeleteComment(comment)}>Delete</a></li> */}
+                                            {/* <li><a class="dropdown-item" href="#">Edit</a></li> */}
+                                            <li><Link to={`/posts/${entry._id}/comments/${comment._id}`}><span>Edit</span></Link></li>
+
+                                        </ul>
+                                        </div>
+                                        // <>
+                                        //     <button onClick={() => handleDeleteComment(comment)}>x</button>
+                                        //     <Link to={`/posts/${entry._id}/comments/${comment._id}`}><span>+</span></Link>
+                                        // </>
                                     }
                                 </div>
                             )}</div>
@@ -78,13 +91,15 @@ function Show({ user }) {
                         : ''
                     }
                     {user && 
-                        <details ref={detailsRef}>
-                            <summary style={{ opacity: '.5' }}>Leave a comment:</summary>
+                        <>
+                            <summary>Reflection</summary>
                             <form onSubmit={handleSubmit}>
                                 <textarea ref={bodyRef} id="lc" cols="1" rows="1" />
-                                <button>Comment</button>
+                                <button>Add</button>
                             </form>
-                        </details>
+                        </>
+                        // <details ref={detailsRef}>
+                        // </details>
                     }
                     
                     <div className="buttons">

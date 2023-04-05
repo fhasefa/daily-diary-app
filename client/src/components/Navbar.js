@@ -46,13 +46,16 @@ function Navbar({ user, setUser }) {
                     Logout
                   </Link>
                 </li>
-                <li className="nav-link" style={{ color: 'yellow', float: 'right' }}>Welcome {user}!</li>
+                <li className="nav-link" style={{ color: 'yellow', float: 'right' }}>Welcome <span style={{textTransform: 'capitalize'}}>{user}</span>!</li>
               </>
             ) : (
               <>
+                <a class="navbar-brand" href="/diary">
+                 <img src="https://m.media-amazon.com/images/I/81T15mxeFVL.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
+                </a>
                 <li className="nav-item">
                   <Link className="nav-link" to="/diary">
-                    About
+                    Diary
                   </Link>
                 </li>
                 <li className="nav-item">
