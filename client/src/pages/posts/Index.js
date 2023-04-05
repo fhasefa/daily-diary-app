@@ -25,7 +25,8 @@ function Index({ user }) {
                                 {entries?.map((entry, index) => 
                                     <Link to={`/diary/${entry._id}`} key={index}>
                                         <div className="a-post">
-                                            {entry.title}
+                                            <h4>{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4> <br />
+                                            {/* {entry.title} */}
                                         </div>
                                     </Link>
                                 )}
@@ -39,7 +40,7 @@ function Index({ user }) {
                         </div>
                     </>
                 ) : (
-                    <h1>Log in to Access Diary</h1>
+                    <h1>Welcome to your personal Diary</h1>
                 )}
             </div>
     )

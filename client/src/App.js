@@ -10,6 +10,7 @@ import IndexPost from './pages/posts/Index';
 import NewPost from './pages/posts/New';
 import ShowPost from './pages/posts/Show';
 import EditComment from './pages/comments/Edit';
+import HomePage from './pages/posts/Home'
 
 import Register from './pages/users/Register';
 import Login from './pages/users/Login';
@@ -45,10 +46,12 @@ function App() {
     <div className="App">
       <Navbar user={loggedIn} setUser={setUser} />
       <Routes>
+          {/* <Route path='/diary/home' element={<HomePage user={loggedIn} />} /> */}
           <Route path='/diary' element={<IndexPost user={loggedIn} />} />
           <Route path='/diary/:id' element={<ShowPost user={loggedIn} />} />
           {loggedIn ?
             <>
+              <Route path='/diary/home' element={<HomePage user={loggedIn} />} />
               <Route path='/diary/new' element={<NewPost user={loggedIn} />} />
               <Route path='/diary/:id/edit' element={<EditPost />} />
               <Route path='/diary/:id/comments/:cid' element={<EditComment />} />

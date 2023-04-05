@@ -28,14 +28,17 @@ function Navbar({ user, setUser }) {
           <ul className="navbar-nav">
             {user ? (
               <>
+                <a class="navbar-brand" href="/diary">
+                 <img src="https://m.media-amazon.com/images/I/81T15mxeFVL.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
+                </a>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Home
+                  <Link className="nav-link" to="/diary/home">
+                    About
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/posts">
-                    Posts
+                  <Link className="nav-link" to="/diary">
+                    Entries
                   </Link>
                 </li>
                 <li onClick={logout}>
@@ -43,13 +46,13 @@ function Navbar({ user, setUser }) {
                     Logout
                   </Link>
                 </li>
-                <li className="nav-link" style={{ color: 'yellow' }}>Welcome {user}!</li>
+                <li className="nav-link" style={{ color: 'yellow', float: 'right' }}>Welcome {user}!</li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/posts">
-                    Posts
+                  <Link className="nav-link" to="/diary">
+                    About
                   </Link>
                 </li>
                 <li className="nav-item">
