@@ -30,7 +30,7 @@ function New({ user }) {
                 <label htmlFor="clr">Body:</label><br />
                 <textarea id="clr" cols="30" rows="10" ref={bodyRef} /><br /><br />
 
-                <button>Submit</button>
+                <button class="btn btn-primary">Submit</button>
             </form>
         </div>
      );

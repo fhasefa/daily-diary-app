@@ -12,7 +12,8 @@ The app is built using the Model-View-Controller (MVC) architecture, which provi
 Bootstrap is used as the front-end framework, providing a range of pre-built UI components and styles that ensure the app is responsive and easy to use on all devices.
 
 <!-- ![](./client/public/Screenshot%202023-04-05%20at%209.55.07%20PM.png) -->
-![Getting Started](./img.jpg)
+<!-- ![Getting Started](./img.jpg) -->
+Homepage
 
 ## Getting Started
 In oreder to get started I used [Trello](https://trello.com/b/XwnEOzJH/sprint-retrospective-template-trello) in order to manage the project, [Lucid](https://lucid.app/lucidchart/466906da-9484-4559-8b5a-b7f4bf4bce3d/edit?viewport_loc=-226%2C15%2C2652%2C1346%2ChujMZ3kL~OKP&invitationId=inv_cf21317c-45b1-4760-b7d0-62a16deddb6f) to plan out server/client connection, and [Figma](https://www.figma.com/file/80ZRzERT8AMzQ26k61RrEy/Wireframing-daily-diary?node-id=0-1&t=hYXPvE0vH97sB9UN-0) in order to get an idea of what my app would look like.
