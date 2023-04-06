@@ -62,7 +62,7 @@ function Login({ setUser }) {
                     value={form.password}
                 />
                 <br /><br />
-                <button>Submit</button>
+                <button class="btn btn-primary">Submit</button>
             </form>
         </div>
      );

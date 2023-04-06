@@ -42,9 +42,9 @@ function Register({ setUser }) {
         <div className="user-auth">
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label for="exampleDataList" class="form-label" htmlFor="username">Username:</label>
                 <br />
-                <input 
+                <input class="form-control"
                     type="text" 
                     id="username"
                     name="username"
@@ -72,7 +72,7 @@ function Register({ setUser }) {
                     value={form.password}
                 />
                 <br /><br />
-                <button>Submit</button>
+                <button type="button" class="btn btn-primary">Submit</button>
             </form>
         </div>
      );

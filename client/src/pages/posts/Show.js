@@ -92,7 +92,7 @@ function Show({ user }) {
                     }
                     {user && 
                         <>
-                            <summary>Reflection</summary>
+                            <summary>Reflection Section</summary>
                             <form onSubmit={handleSubmit}>
                                 <textarea ref={bodyRef} id="lc" cols="1" rows="1" />
                                 <button type="button" class="btn btn-primary">Add</button>

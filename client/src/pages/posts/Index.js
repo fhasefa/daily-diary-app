@@ -24,10 +24,10 @@ function Index({ user }) {
 
                                 {entries?.map((entry, index) => 
                                     <div class="accordion" id="accordionExample">
-                                        <h4 class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4>
+                                        <h4 class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style={{ backgroundColor: "#4ea8de", color: "red"}}>{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4>
                                         <Link to={`/diary/${entry._id}`} key={index}>
-                                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample" className="a-post">
-                                                {/* <h4 class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4> <br /> */}
+                                            <div id="collapseOne" className="accordion-collapse collapse show a-post" data-bs-parent="#accordionExample" style={{ backgroundColor: "#64dfdf" }}>
+                                                {/* <h4 className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{new Date(entry.createdAt).toLocaleDateString()} Diary Entry</h4> <br /> */}
                                                 {entry.title}
                                             </div>
                                         </Link>
@@ -44,7 +44,11 @@ function Index({ user }) {
                         </div>
                     </>
                 ) : (
-                    <h1>Welcome to your personal Diary</h1>
+                    <>
+                        <h1 style={{textAlign: "center"}}>Welcome to your personal Diary</h1>
+                        <img style={{ display: "block", margin: "auto" }} src="https://m.media-amazon.com/images/I/81T15mxeFVL.png"/>
+
+                    </>
                 )}
             </div>
     )
